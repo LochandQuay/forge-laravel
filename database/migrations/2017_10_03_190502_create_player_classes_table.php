@@ -19,6 +19,12 @@ class CreatePlayerClassesTable extends Migration
             $table->string('icon_url');
             $table->timestamps();
         });
+
+        Schema::table('decks', function($table) {
+          $table->foreign('class_id')->references('id')->on('player_classes');
+        });
+
+
     }
 
     /**

@@ -17,7 +17,7 @@ class CreateDecksTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('type')->default('Standard');
-            $table->integer('class_id');
+            $table->integer('class_id')->unsigned();
             $table->timestamps();
 
             $table->unique(['name', 'type', 'class_id']);

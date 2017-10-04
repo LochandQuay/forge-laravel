@@ -15,8 +15,10 @@ class CreateCardMechanicsTable extends Migration
     {
         Schema::create('card_mechanics', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('card_id');
-            $table->integer('mechanic_id');
+            $table->integer('card_id')->unsigned();
+            $table->foreign('card_id')->references('id')->on('cards');
+            $table->integer('mechanic_id')->unsigned();
+            $table->foreign('mechanic_id')->references('id')->on('mechanics');
             $table->timestamps();
         });
     }

@@ -15,8 +15,10 @@ class CreateDeckMembershipTable extends Migration
     {
         Schema::create('deck_memberships', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('deck_id');
-            $table->integer('card_id');
+            $table->integer('deck_id')->unsigned();
+            $table->foreign('deck_id')->references('id')->on('decks');
+            $table->integer('card_id')->unsigned();
+            $table->foreign('card_id')->references('id')->on('cards');
             $table->timestamps();
         });
     }
